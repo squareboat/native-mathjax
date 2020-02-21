@@ -1,0 +1,33 @@
+{
+  "name": "native-mathjax",
+  "version": "1.0.0",
+  "description": "A simple NPM nodule to show Mathmatical equations using MathJAX in react nativeusing Webview",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kindacoder/native-mathjax.git"
+  },
+  "keywords": [
+    "Native",
+    "mathjax",
+    "react-native-mathjax",
+    "native-mathjax",
+    "latex",
+    "maths",
+    "react-native-math"
+  ],
+  "author": "kindacoder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kindacoder/native-mathjax/issues"
+  },
+  "homepage": "https://github.com/kindacoder/native-mathjax#readme",
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-native": "^0.61.5",
+    "react-native-autoheight-webview": "^1.4.2"
+  }
+}
