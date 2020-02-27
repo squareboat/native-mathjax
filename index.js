@@ -1,13 +1,21 @@
 import React from 'react';
-import {View,StyleSheet, Dimensions} from "react-native"
-import AutoHeightWebView from 'react-native-autoheight-webview';
+import { View,  } from 'react-native';
+import {WebView} from 'react-native-webview'
 
-const defaultConfiguration = {
-	jax: ["input/TeX","output/HTML-CSS"],
-            tex2jax: { inlineMath: [["$$","$$"],["\\(","\\)"]] },
-            showMathMenu: false,
-            showMathMenuMSIE: false
+const defaultOptions = {
+	messageStyle: 'none',
+	extensions: [ 'tex2jax.js' ],
+	jax: [ 'input/TeX', 'output/HTML-CSS' ],
+	tex2jax: {
+		inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+		displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+		processEscapes: true,
+	},
+	TeX: {
+		extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js']
+	}
 };
+
 class MathJax extends React.Component {
 	constructor(props) {
 		super(props);
@@ -22,9 +30,9 @@ class MathJax extends React.Component {
 		});
 	}
 
-	displayMathjax(content) {
+	wrapMathjax(content) {
 		const options = JSON.stringify(
-			Object.assign({}, defaultConfiguration, this.props.mathJaxConfiguration)
+			Object.assign({}, defaultOptions, this.props.mathJaxOptions)
 		);
 
 		return `
@@ -39,32 +47,29 @@ class MathJax extends React.Component {
 				});
 			</script>
 
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js"></script>
 
 			${content}
 		`;
 	}
 	render() {
-		const html = this.displayMathjax(this.props.html);
+		const html = this.wrapMathjax(this.props.html);
+
 		// Create new props without `props.html` field. Since it's deprecated.
 		const props = Object.assign({}, this.props, { html: undefined });
 
 		return (
-			<View style={{width:'100%'}}>
-				<AutoHeightWebView
-					source={{ html: html }}
-					style={styles.htmlViewStyle}
-					{...props}	
-				/>
-				
-		    </View>
+      <View style={{ height: this.state.height, ...props.style }}>
+        <WebView
+          scrollEnabled={true}
+          onMessage={ this.handleMessage.bind(this) }
+          source={{ html }}
+		  scalesPageToFit={false}
+          {...props}
+        />
+      </View>
 		);
 	}
 }
-const styles = StyleSheet.create({
-	htmlViewStyle: {
-	  width: Dimensions.get('window').width - 100, marginLeft:5,marginBottom:30,flex: 1, minHeight: '100%'
-	},
-});
 
 export default MathJax;
