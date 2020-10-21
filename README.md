@@ -1,5 +1,5 @@
 # native-mathjax
-A simple NPM nodule to show Mathmatical equations using MathJAX in react nativeusing Webview.
+A simple NPM nodule to show Mathematical equations using MathJAX in React Native using Webview.
 It uses AutoHeightwebview to render the content as webview and set height of the content automatically.
 
 # Installation
