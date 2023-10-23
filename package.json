@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kindacoder/native-mathjax.git"
+    "url": "https://github.com/hS71Ru/native-mathjax"
   },
   "keywords": [
     "Native",
@@ -19,14 +19,16 @@
     "maths",
     "react-native-math"
   ],
-  "author": "kindacoder",
+  "author": "hS71Ru",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kindacoder/native-mathjax/issues"
+    "url": "https://github.com/squareboat/native-mathjax/issues/3"
   },
-  "homepage": "https://github.com/kindacoder/native-mathjax#readme",
+  "homepage": "https://github.com/hS71Ru/native-mathjax#readme",
   "dependencies": {
-    "react": "^16.12.0",
+    "@babel/traverse": "^7.23.2",
+    "native-mathjax": "^1.0.3",
+    "react": "^16.9.0",
     "react-native": "^0.61.5",
     "react-native-webview": "^8.1.2"
   }
