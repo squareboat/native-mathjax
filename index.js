@@ -57,6 +57,10 @@ class MathJax extends React.Component {
 
 		// Create new props without `props.html` field. Since it's deprecated.
 		const props = Object.assign({}, this.props, { html: undefined });
+        const newObject = Object.assign({}, props);
+        delete newObject.html;
+
+
 
 		return (
       <View style={{ height: this.state.height, ...props.style }}>
